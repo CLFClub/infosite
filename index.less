@@ -1,0 +1,215 @@
+@import "gen";
+body,html
+{
+  height: 100%;
+  width:100%;
+  margin:0;
+}
+body
+{
+  display: flex;
+}
+@keyframes leftdisplay {
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  71.4%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#left
+{
+  background-image: url('back.jpg');
+  width: 0;
+  .standBack;
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.35);
+  *
+  {
+    display: none;
+    animation: leftdisplay 0.6s ease;
+  }
+  &.active
+  {
+    width: 400px;
+    *{
+      display:block;
+    }
+  }
+  transition: all 0.5s ease;
+  overflow: hidden;
+  .info-top
+  {
+    margin:15px 10px 0 10px;
+    background-color: @standTextBack+rgba(0,0,0,0.3);
+    box-shadow: white 0 0 1px;
+    hr
+    {
+      border-color: white;
+    }
+    padding: 5px;
+    .info-title
+    {
+      line-height: 2;
+      font-weight: 600;
+      font-size: x-large;
+    }
+    .info-text
+    {
+      min-height: 500px;
+    }
+    .info-opera
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin:10px 0 0 10px;
+      padding-bottom: 10px;
+    }
+
+  }
+
+
+}
+#right
+{
+  flex:1;
+  #top
+  {
+    display: flex;
+    #title
+    {
+      font-size: 1.8em;
+      font-weight: 500;
+      line-height: 2;
+      margin-left: 30px;
+    }
+    #tabs
+    {
+      flex:1;
+      text-align: right;
+      align-self: center;
+      margin-right: 5em;
+      height: 3em;
+      line-height: 3;
+      padding-top: 35px;
+      a{
+        @h:3rem;
+        text-decoration: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        color:black;
+        height: @h;
+        display: inline-block;
+        position: relative;
+        background-color: white;
+        margin-left: 2rem;
+
+        &::after
+        {
+          content: "";
+          transition: all 0.3s linear ;
+          opacity: 0;
+          width: 100%;
+          position: absolute;
+          top:0;
+          left:0;
+          height: @h - 0.2rem;
+          box-shadow: rgba(0, 0, 0, 0.17) 0 0 5px;
+          z-index: -1;
+          border-radius: 3px;
+        }
+        &:hover::after
+        {
+          opacity: 1;
+        }
+        &.active::after
+        {
+          box-shadow: rgba(0, 0, 0, 0.4) 0 0 5px;
+          opacity: 1;
+        }
+      }
+    }
+
+  }
+  hr{
+    margin:0;
+  }
+
+  //列表页样式
+  #listcontent
+  {
+    &>div
+    {
+      display: none;
+    }
+    &>div:target
+    {
+      display: block;
+    }
+    //
+    padding: 30px 50px 0 50px;
+
+    //
+    .litem
+    {
+      @lh:300px;
+      height: @lh;
+      width: 250px;
+      position: relative;
+      padding: 3px;
+      box-shadow: black 0 0 5px;
+      transition: all 0.3s linear;
+      &:hover
+      {
+        transform: translateY(-5px);
+      }
+      img
+      {
+        height: 100%;
+        width: 100%;
+        top:0;
+        left:0;
+        position: absolute;
+        z-index: -1;
+      }
+      .ltext
+      {
+
+        position: absolute;
+        bottom: 0;
+        left:0;
+        padding:5px 10px 0 10px;
+        background-color: @standTextBack;
+        transition: all 0.5s ease;
+        height: @lh*0.25;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+        .ltitle
+        {
+          font-weight: 600;
+          font-size: large;
+          font-family: "Droid Sans";
+        }
+        .ldesc
+        {
+
+          word-break: break-all;
+          word-wrap: break-word;
+
+        }
+      }
+      .ltext:hover
+      {
+        height: @lh;
+      }
+    }
+  }
+
+}
