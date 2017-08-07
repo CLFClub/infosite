@@ -1,0 +1,27 @@
+//左边栏内容出现动画
+@keyframes leftdisplay {
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  71.4%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+//列表页的出现和切换动画
+@keyframes listdisplay {
+  from{
+    opacity:0;
+    transform: translateY(10px) scaleY(0.9) scaleX(0.9);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px) scaleY(1) scaleX(1);
+  }
+}
