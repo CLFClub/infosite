@@ -18,12 +18,13 @@ function undisplayItem() {
 }
 $(function () {
     //页面选择事件
-    $("#tabs>a").click(function () {
+    $("#tabs>a #list-plane>a").click(function () {
         $("#tabs>a").removeClass("active");
         $(this).addClass("active");
     });
 
     //表项点击事件
+    //此标记表示上一次点击事件由item触发 即此时处于显示详情的状态
     var iscitem = false;
     $(".litem").click(function () {
         //构造显示信息对象
@@ -88,5 +89,23 @@ $(function () {
     });
     $(".info-enterback").click(function () {
         window.location.href = "http://www.baidu.com";
-    })
+    });
+    //用户按钮事件
+    $("#user-widget").click(function () {
+        var el=$("#user-plane");
+        if(el.hasClass("active")) el.removeClass("active");
+        else el.addClass("active");
+    });
+    //下面为手机适配部分
+    //返回按钮事件
+    $("#left-return").click(function () {
+        undisplayItem();
+    });
+    //列表按钮事件
+    $("#list-widget").click(function () {
+        var el=$("#list-plane");
+        if(el.hasClass("active")) el.removeClass("active");
+        else el.addClass("active");
+    });
+    //
 });

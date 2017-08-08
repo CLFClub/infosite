@@ -240,8 +240,15 @@ body
       box-shadow: black 0 0 4px;
     }
   }
-  //默认情况下 隐藏listwidget 只在手机屏幕上显示
-  #list-widget{
-    display: none;
+  //用户挂件
+  #user-widget{
+    #user-plane {
+      //默认不显示 点击事件后显示
+      display: none;
+      &.active{
+        display: block;
+      }
+    }
   }
+
 }

@@ -15,6 +15,10 @@
 </head>
 <body>
 <div id="left">
+    <!--这里一栏用于手机页面的返回按钮-->
+    <div id="left-return">
+        <img src="left.svg" alt="返回">
+    </div>
 
     <div class="info-top">
         <div class="info-title">
@@ -118,12 +122,21 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, veritatis?
     <!--挂件区域-->
     <div id="user-widget">
         <!--用户相关挂件-->
-        <img src="account.svg">
-
+        <img src="account.svg" alt="用户信息">
+        <div id="user-plane">
+            <!--用户信息面板-->
+            <!--或者登陆面板-->
+        </div>
     </div>
     <div id="list-widget">
         <!--手机选择列表挂件-->
-        <img src="Category.svg">
+        <img src="Category.svg" alt="分类列表">
+        <div id="list-plane">
+            <!--手机列表面板-->
+            <a id="mbtn-starting" class="active" href="#starting">进行中</a>
+            <a id="mbtn-prepare" href="#prepare">未开始</a>
+            <a id="mbtn-done" href="#done">已结束</a>
+        </div>
     </div>
 </div>
 
