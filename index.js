@@ -102,22 +102,28 @@ $(function () {
     //用户按钮事件
     $("#user-widget").click(function (e) {
         //清除所有面板
-        $("[id*='plane']").removeClass("active");
         var el=$("#user-plane");
-        if(el.hasClass("active")) el.removeClass("active");
+        var isactive=el.hasClass("active");
+        $("[id*='plane']").removeClass("active");
+        if(isactive) el.removeClass("active");
         else el.addClass("active");
-        e.stopPropagation();
+        e.stopPropagation();;
     });
     //下面为手机适配部分
     //返回按钮事件
     $("#left-return").click(function (e) {
         undisplayItem();
         e.stopPropagation();
+        //返回时清除所有面板
+        $("[id*='plane']").removeClass("active");
     });
     //列表按钮事件
     $("#list-widget").click(function (e) {
+
         var el=$("#list-plane");
-        if(el.hasClass("active")) el.removeClass("active");
+        var isactive=el.hasClass("active");
+        $("[id*='plane']").removeClass("active");
+        if(isactive) el.removeClass("active");
         else el.addClass("active");
         e.stopPropagation();
     });

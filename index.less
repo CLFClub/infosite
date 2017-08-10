@@ -1,7 +1,6 @@
 @import "gen";
 @import "animation";
-@import "narrow";
-@import "mobile";
+
 body,html
 {
   height: 100%;
@@ -51,7 +50,7 @@ body
     }
     .info-text
     {
-      min-height: 500px;
+      min-height: 60vh;
     }
     .info-opera
     {
@@ -217,12 +216,13 @@ body
 }
 
 //此处为挂件部分
+//挂件容器
 #widgets{
   display: block;
   position: fixed;
   bottom: 30px;
   right: 20px;
-  div
+  &>div
   {
     height: 20px;
     width: 20px;
@@ -230,6 +230,7 @@ body
     background-color: @standTextBack;
     box-shadow: black 0 0 2px;
     padding: 5px;
+    position: relative;
     //图标填充
     img{
       height: 100%;
@@ -238,6 +239,17 @@ body
     }
     &:hover{
       box-shadow: black 0 0 4px;
+    }
+    //设立设定面板的通用规则
+    [id*="plane"]{
+      position: absolute;
+      bottom: 40px;
+      right: 0;
+      //大小
+      min-height: 50px;
+      min-width: 40px;
+      background-color: white;
+      box-shadow:black 0 0 2px;
     }
   }
   //用户挂件
@@ -248,7 +260,12 @@ body
       &.active{
         display: block;
       }
+      //用户面板样式
     }
   }
 
 }
+
+
+@import "narrow";
+@import "mobile";

@@ -1,19 +1,24 @@
 //此文件包括一切适应手机屏幕的调整
 //默认情况下 隐藏listwidget 只在手机屏幕上显示
 @import "gen";
+
 #list-widget{
   display: none;
-  position: relative;
   //下面为列表面板设置部分
   #list-plane{
-    //默认列表面板在列表挂件点击后显示
-    //以后再调样式
-    display: none;
-    position: absolute;
-    right: 0;
-    bottom: 20px;
-    &.active{
+    //选择按钮
+    a{
       display: block;
+      width: 100px;
+      line-height: 2.5;
+      text-decoration: none;
+      color:black;
+      font-size: 1.2em;
+      font-weight: bold;
+      &:active{
+        background-color: rgba(210, 210, 210, 0.62);
+      }
+      text-align: center;
     }
   }
 }
@@ -38,42 +43,59 @@
   @media (max-width: 650px) {
     //隐藏上方分类栏
     //显示下方列表按钮
-    #tabs{
+    #tabs {
       display: none;
     }
-    #widgets{
+    #left.active>#left-return{
+      display: block!important;
+    }
+    #widgets {
 
-      #list-widget{
+      [id*="plane"] {
+        //设定面板从手机右边出现
+        position: fixed!important;
+        right: -100%!important;
+        bottom: 200px!important;
         display: block!important;
+        transition: all 0.5s ease;
+        &.active{
+          right: 0!important;
+        }
       }
-      div{
-        height: 35px!important;
-        width: 35px!important;
-        margin-right: 0!important;
+      #list-widget {
+        display: block !important;
       }
-    }
+      & > div {
+        height: 35px !important;
+        width: 35px !important;
+        margin-right: 0 !important;
+      }
 
-    .litem{
-      margin-left: 0!important;
+
+    }
+      //让left栏显示时占据屏幕
+      #left {
+        position: fixed;
+        width: 100% !important;
+        height: 100%;
+        display: none;
+        z-index: 999;
+        //添加显示动画
+        animation: mobile_leftdisplay 0.6s ease;
+        &.active {
+          display: block;
+        }
+        * {
+          animation: none !important;
+        }
+      }
+
+    .litem {
+      margin-left: 0 !important;
       margin-right: 20px;
-    }
-    //让left栏显示时占据屏幕
-    #left
-    {
-      position: fixed;
-      width: 100%!important;
-      height: 100%;
-      display: none;
-      z-index: 999;
-      //添加显示动画
-      animation: mobile_leftdisplay 0.6s ease;
-      &.active{
-        display: block;
-      }
-      *{
-        animation: none!important;
-      }
-    }
+      width: 150px!important;
+      height: 180px!important;
 
+    }
+    }
   }
-}
