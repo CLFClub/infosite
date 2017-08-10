@@ -18,15 +18,19 @@ function undisplayItem() {
 }
 $(function () {
     //页面选择事件
-    $("#tabs>a #list-plane>a").click(function () {
-        $("#tabs>a").removeClass("active");
-        $(this).addClass("active");
+    $("#tabs>a,#list-plane>a").click(function () {
+        $("#tabs>a,#list-plane>a").removeClass("active");
+        //获得hash
+        var hash=this.id.split('-')[1];
+        // console.log(hash);
+        var ael="#btn-"+hash;
+        var bel="#mbtn-"+hash;
+        $(ael).addClass("active");
+        $(bel).addClass("active");
     });
 
     //表项点击事件
-    //此标记表示上一次点击事件由item触发 即此时处于显示详情的状态
-    var iscitem = false;
-    $(".litem").click(function () {
+    $(".litem").click(function (e) {
         //构造显示信息对象
         var infoobj = {
             id: $(this).attr("data-cid"),
@@ -36,12 +40,10 @@ $(function () {
             isalready: $(this).attr("data-already")
         };
         displayItem(infoobj);
-        iscitem = true;
+        e.stopPropagation();
     })
     $("#right").click(function (e) {
-        if (!iscitem)
             undisplayItem();
-        iscitem = false;
     });
     //初始化检测
     var hash = window.location.hash;
@@ -52,7 +54,14 @@ $(function () {
         $("#tabs>a").removeClass("active");
         $(el).addClass("active");
     }
+    //设置标准分类按钮激活状态
     setfunc("#btn-" + hash.slice(1, hash.length));
+    //列表面板状态
+    var setmfunc=function (el) {
+        $("#list-plane>a").removeClass("active");
+        $(el).addClass("active");
+    };
+    setmfunc("#mbtn-" + hash.slice(1, hash.length));
 
 
     //报名监听
@@ -91,21 +100,36 @@ $(function () {
         window.location.href = "http://www.baidu.com";
     });
     //用户按钮事件
-    $("#user-widget").click(function () {
+    $("#user-widget").click(function (e) {
+        //清除所有面板
+        $("[id*='plane']").removeClass("active");
         var el=$("#user-plane");
         if(el.hasClass("active")) el.removeClass("active");
         else el.addClass("active");
+        e.stopPropagation();
     });
     //下面为手机适配部分
     //返回按钮事件
-    $("#left-return").click(function () {
+    $("#left-return").click(function (e) {
         undisplayItem();
+        e.stopPropagation();
     });
     //列表按钮事件
-    $("#list-widget").click(function () {
+    $("#list-widget").click(function (e) {
         var el=$("#list-plane");
         if(el.hasClass("active")) el.removeClass("active");
         else el.addClass("active");
+        e.stopPropagation();
     });
+
+
+    //其他地方点击关闭所有面板
     //
+    document.addEventListener("click",function () {
+        $("[id*='plane']").removeClass("active");
+    });
+    //拦截面板本身的事件
+    $("[id*='plane']").click(function (e) {
+        e.stopPropagation();
+    });
 });
