@@ -40,7 +40,7 @@
 }
 
 @media screen {
-  @media (max-width: 650px) {
+  @media (max-width: 850px) {
     //隐藏上方分类栏
     //显示下方列表按钮
     #tabs {
@@ -57,7 +57,7 @@
         right: -100%!important;
         bottom: 200px!important;
         display: block!important;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
         &.active{
           right: 0!important;
         }
@@ -95,7 +95,15 @@
       margin-right: 20px;
       width: 150px!important;
       height: 180px!important;
-
+      .ltext{
+        height: 50px!important;
+        .ldesc{
+          display: none;
+        }
+        .ltitle{
+          text-align: center;
+        }
+      }
     }
     }
   }

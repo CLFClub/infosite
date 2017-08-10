@@ -68,9 +68,12 @@ body
 #right
 {
   flex:1;
+  overflow: auto;
+  height: 100vh;
   #top
   {
     display: flex;
+    flex-wrap: wrap;
     #title
     {
       font-size: 1.8em;
@@ -80,13 +83,16 @@ body
     }
     #tabs
     {
-      flex:1;
+      flex-basis: 350px;
+      flex-shrink: 1;
+      flex-grow: 1;
       text-align: right;
       align-self: center;
       margin-right: 5em;
       height: 3em;
       line-height: 3;
       padding-top: 35px;
+
       a{
         @h:3rem;
         text-decoration: none;
@@ -184,6 +190,8 @@ body
         background-color: @standTextBack;
         transition: all 0.5s ease;
         height: @lh*0.25;
+        width: 100%;
+        box-sizing: border-box;
         overflow: hidden;
         text-overflow: ellipsis;
         cursor: default;
@@ -208,7 +216,7 @@ body
       }
       .ltext:hover
       {
-        height: @lh;
+        height: @lh+5px;
       }
     }
   }
@@ -267,5 +275,4 @@ body
 }
 
 
-@import "narrow";
 @import "mobile";
